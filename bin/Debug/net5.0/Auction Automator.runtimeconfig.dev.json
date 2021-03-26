@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/Users/monkiebrain/.dotnet/store/|arch|/|tfm|",
+      "/Users/monkiebrain/.nuget/packages"
+    ]
+  }
+}

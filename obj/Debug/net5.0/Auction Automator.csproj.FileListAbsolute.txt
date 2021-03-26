@@ -1,0 +1,15 @@
+/Users/monkiebrain/Projects/Auction Automator/bin/Debug/net5.0/Auction Automator.deps.json
+/Users/monkiebrain/Projects/Auction Automator/bin/Debug/net5.0/Auction Automator.runtimeconfig.json
+/Users/monkiebrain/Projects/Auction Automator/bin/Debug/net5.0/Auction Automator.runtimeconfig.dev.json
+/Users/monkiebrain/Projects/Auction Automator/bin/Debug/net5.0/Auction Automator.dll
+/Users/monkiebrain/Projects/Auction Automator/bin/Debug/net5.0/ref/Auction Automator.dll
+/Users/monkiebrain/Projects/Auction Automator/bin/Debug/net5.0/Auction Automator.pdb
+/Users/monkiebrain/Projects/Auction Automator/obj/Debug/net5.0/Auction Automator.csprojAssemblyReference.cache
+/Users/monkiebrain/Projects/Auction Automator/obj/Debug/net5.0/Auction Automator.GeneratedMSBuildEditorConfig.editorconfig
+/Users/monkiebrain/Projects/Auction Automator/obj/Debug/net5.0/Auction Automator.AssemblyInfoInputs.cache
+/Users/monkiebrain/Projects/Auction Automator/obj/Debug/net5.0/Auction Automator.AssemblyInfo.cs
+/Users/monkiebrain/Projects/Auction Automator/obj/Debug/net5.0/Auction Automator.csproj.CoreCompileInputs.cache
+/Users/monkiebrain/Projects/Auction Automator/obj/Debug/net5.0/Auction Automator.dll
+/Users/monkiebrain/Projects/Auction Automator/obj/Debug/net5.0/ref/Auction Automator.dll
+/Users/monkiebrain/Projects/Auction Automator/obj/Debug/net5.0/Auction Automator.pdb
+/Users/monkiebrain/Projects/Auction Automator/obj/Debug/net5.0/Auction Automator.genruntimeconfig.cache
