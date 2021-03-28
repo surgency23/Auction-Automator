@@ -1,0 +1,5 @@
+{
+    "auctionLinks": "//span[@id=\"auction_title\"]/ancestor-or-self::a",
+    "auctionTitles": "//span[@id=\"auction_title\"]/b",
+    "location": "//strong[contains(text(),\"Location:\")]/ancestor-or-self::tr/td[2]"
+}

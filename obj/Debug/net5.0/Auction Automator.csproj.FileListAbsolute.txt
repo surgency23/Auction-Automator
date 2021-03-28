@@ -13,3 +13,6 @@
 /Users/monkiebrain/Projects/Auction Automator/obj/Debug/net5.0/ref/Auction Automator.dll
 /Users/monkiebrain/Projects/Auction Automator/obj/Debug/net5.0/Auction Automator.pdb
 /Users/monkiebrain/Projects/Auction Automator/obj/Debug/net5.0/Auction Automator.genruntimeconfig.cache
+/Users/monkiebrain/Projects/Auction Automator/bin/Debug/net5.0/HtmlAgilityPack.dll
+/Users/monkiebrain/Projects/Auction Automator/obj/Debug/net5.0/Auction Automator.csproj.CopyComplete
+/Users/monkiebrain/Projects/Auction Automator/bin/Debug/net5.0/Newtonsoft.Json.dll

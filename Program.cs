@@ -1,24 +1,19 @@
 ﻿using System;
 using System.Net;
 using System.IO;
+using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
-namespace Test {
+namespace AuctionAutomation {
     class Program {
-        static void Main(string[] args) {
-            string html = string.Empty;
-            string url = @"https://www.capitalcityonlineauction.com/cgi-bin/mncal.cgi?ccoa";
-
-            HttpWebRequest request = (HttpWebRequest) WebRequest.Create(url);
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-
-            using(HttpWebResponse response = (HttpWebResponse) request.GetResponse())
-            using(Stream stream = response.GetResponseStream())
-            using(StreamReader reader = new StreamReader(stream)) {
-
-                html = reader.ReadToEnd();
-            }
-
-            Console.WriteLine(html);
+        static void Main() {
+            WebInteractions auctionPull = new WebInteractions();
+            JObject selectors = auctionPull.selectorReader();
+            string htmlData = auctionPull.getRequest("https://www.capitalcityonlineauction.com/cgi-bin/mncal.cgi?ccoa");
+            List < AuctionObject > auctionArray = auctionPull.htmlParser(htmlData, selectors, "https://www.capitalcityonlineauction.com");
+            auctionArray = auctionPull.locationBuilder(auctionArray, selectors);
+            auctionArray = auctionArray.FindAll(auction => !auction.Title.Contains("THIS AUCTION HAS ENDED"));
+            
         }
     }
 }
