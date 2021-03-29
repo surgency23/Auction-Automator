@@ -1,7 +1,4 @@
-﻿using System;
-using System.Net;
-using System.IO;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
 namespace AuctionAutomation {
