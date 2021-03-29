@@ -9,11 +9,10 @@ namespace AuctionAutomation {
         static void Main() {
             WebInteractions auctionPull = new WebInteractions();
             JObject selectors = auctionPull.selectorReader();
-            string htmlData = auctionPull.getRequest("https://www.capitalcityonlineauction.com/cgi-bin/mncal.cgi?ccoa");
+            string htmlData = auctionPull.getRequest("https://www.capitalcityonlineauction.com");
             List < AuctionObject > auctionArray = auctionPull.htmlParser(htmlData, selectors, "https://www.capitalcityonlineauction.com");
             auctionArray = auctionPull.locationBuilder(auctionArray, selectors);
-            auctionArray = auctionArray.FindAll(auction => !auction.Title.Contains("THIS AUCTION HAS ENDED"));
-            
+
         }
     }
 }

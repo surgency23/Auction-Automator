@@ -6,12 +6,10 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
-using System.Threading;
 
 
 public class WebInteractions {
     public string getRequest(string url) {
-
         string html = string.Empty;
         HttpWebRequest request = (HttpWebRequest) WebRequest.Create(url);
         request.AutomaticDecompression = DecompressionMethods.GZip;
@@ -31,11 +29,9 @@ public class WebInteractions {
         var htmlDoc = new HtmlDocument();
         htmlDoc.LoadHtml(html);
         var auctionTitles = htmlDoc.DocumentNode.SelectNodes(auctionTitleSelctor);
-        var auctionLinks = htmlDoc.DocumentNode
-            .SelectNodes(auctionLinkSelctor);
+        var auctionLinks = htmlDoc.DocumentNode.SelectNodes(auctionLinkSelctor);
         int totalLinks = htmlDoc.DocumentNode.SelectNodes(auctionTitleSelctor).Count;
         for (int i = 0; i < totalLinks; i++) {
-
             AuctionObject auction = new AuctionObject {
                 Title = auctionTitles[i].InnerHtml,
                     Link = (string)(baseURL + auctionLinks[i].Attributes["href"].Value)
@@ -60,11 +56,18 @@ public class WebInteractions {
             var htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(html);
             var location = htmlDoc.DocumentNode.SelectSingleNode(auctionLocationSelector).InnerHtml;
-            location = tagRegex.Replace(location,"");
+            location = tagRegex.Replace(location, "");
             string address = addressRegex.Match(location).ToString();
             auction.Address = address;
         }
         auctionObjects = auctionObjects.FindAll(auction => !auction.Title.Contains("THIS AUCTION HAS ENDED"));
+        return auctionObjects;
+    }
+
+    public List < AuctionObject > itemSearch(List < AuctionObject > auctionObjects, JObject selectors, string[] searchTerms) {
+        auctionObjects.ForEach(auction => {
+            
+        });
         return auctionObjects;
     }
 }
