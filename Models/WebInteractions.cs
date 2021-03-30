@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
+using System.Net.Http;
 
 
 public class WebInteractions {
@@ -42,15 +43,15 @@ public class WebInteractions {
     }
     public JObject selectorReader() {
         string fileName = "Selectors.json";
-        string path = Path.Combine(Environment.CurrentDirectory, @"References", fileName);
+        string path = Path.Combine(Environment.CurrentDirectory, @ "References", fileName);
         var selectors = File.ReadAllText(path);
         JObject obj = JObject.Parse(selectors);
         return obj;
     }
     public List < AuctionObject > locationBuilder(List < AuctionObject > auctionObjects, JObject selectors) {
         string auctionLocationSelector = (string) selectors["location"];
-        var tagRegex = new Regex(@"(?=<).+?(?<=>)");
-        var addressRegex = new Regex(@"(?<=LOCATION.+>|\s)\d.+?(?<=(\d{5})|(OH|OHIO))");
+        var tagRegex = new Regex(@ "(?=<).+?(?<=>)");
+        var addressRegex = new Regex(@ "(?<=LOCATION.+>|\s)\d.+?(?<=(\d{5})|(OH|OHIO))");
         foreach(var auction in auctionObjects) {
             string html = getRequest(auction.Link);
             var htmlDoc = new HtmlDocument();
@@ -64,10 +65,41 @@ public class WebInteractions {
         return auctionObjects;
     }
 
-    public List < AuctionObject > itemSearch(List < AuctionObject > auctionObjects, JObject selectors, string[] searchTerms) {
-        auctionObjects.ForEach(auction => {
-            
-        });
+    async public List < AuctionObject > itemSearch(List < AuctionObject > auctionObjects, JObject selectors, string[] searchTerms) {
+        HttpClient client = new HttpClient();
+        var requestObject = new Dictionary <string, string> () {
+                {
+                    "referrer",
+                    "temp"
+                }, {
+                    "referrerPolicy",
+                    "strict-origin-when-cross-origin"
+                }, {
+                    "method",
+                    "POST"
+                }, {
+                    "mode",
+                    "cors"
+                }, {
+                    "credentials",
+                    "omit"
+                }
+            };
+        foreach(AuctionObject auction in auctionObjects) {
+            requestObject["referrer"] = auction.Link;
+            foreach(string term in searchTerms) {
+                
+            requestObject["body"] = $"auction=ccoa500&keyword={term}&stype=ANY&search=Go%21";
+
+            var content = new FormUrlEncodedContent(requestObject);
+
+            var response = await client.PostAsync("https://www.capitalcityonlineauction.com/cgi-bin/mnlist.cgi", content);
+
+            var responseString = await response.Content.ReadAsStringAsync();
+        }
+
+        }
+
         return auctionObjects;
     }
 }
