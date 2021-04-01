@@ -9,7 +9,6 @@ using System.Text.RegularExpressions;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-
 public class WebInteractions
 {
     public string getRequest(string url)
